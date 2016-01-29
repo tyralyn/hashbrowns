@@ -7,20 +7,26 @@ class hashTable:
 			self.table.append([])
 	
 	def printTable(self):
+		print ("hashTable of size ", self.tableSize)
 		comma = ", "
 		for i in range (0,self.tableSize):
+			print(i,": ", end = '')
 			print (comma.join(self.table[i]))
 	
 	def stringLengthHash(self, key):
 		hashVal = 0;
 		for i in range (0, len(key)):
 			hashVal = 37 * hashVal + ord(key[i])
-			print(hashVal)
 		hashVal %= self.tableSize
 		if hashVal < 0:
 			hashVal += tableSize
 		return hashVal
+	def addToTable(self,key, func):
+		hashed = self.func(self,key);
+		self.table[hashed].append(key);
 
-k = hashTable(3)
+k = hashTable(13)
+k.addToTable("tyralyn", hashTable.stringLengthHash)
+k.addToTable("fuzz", stringLengthHash)
+k.addToTable("chandler", stringLengthHash)
 k.printTable()
-print(k.stringLengthHash("i like grapes"))
