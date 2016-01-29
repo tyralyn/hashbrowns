@@ -22,11 +22,13 @@ class hashTable:
 			hashVal += tableSize
 		return hashVal
 	def addToTable(self,key, func):
-		hashed = self.func(self,key);
-		self.table[hashed].append(key);
+		hashed = func(self,key);
+		if key not in table[hashed]:
+			self.table[hashed].append(key);
 
 k = hashTable(13)
 k.addToTable("tyralyn", hashTable.stringLengthHash)
-k.addToTable("fuzz", stringLengthHash)
-k.addToTable("chandler", stringLengthHash)
+k.addToTable("tyralyn", hashTable.stringLengthHash)
+k.addToTable("fuzz", hashTable.stringLengthHash)
+k.addToTable("chandler", hashTable.stringLengthHash)
 k.printTable()
