@@ -13,7 +13,7 @@ class hashTable:
 			print(i,": ", end = '')
 			print (comma.join(self.table[i]))
 	
-	def stringLengthHash(self, key):
+	def stringLengthHash(self,key):
 		hashVal = 0;
 		for i in range (0, len(key)):
 			hashVal = 37 * hashVal + ord(key[i])
@@ -21,9 +21,10 @@ class hashTable:
 		if hashVal < 0:
 			hashVal += tableSize
 		return hashVal
-	def addToTable(self,key, func):
-		hashed = func(self,key);
-		if key not in table[hashed]:
+
+	def addToTable(self,key,hashFunc):
+		hashed = hashFunc(self,key);
+		if key not in self.table[hashed]:
 			self.table[hashed].append(key);
 
 k = hashTable(13)
